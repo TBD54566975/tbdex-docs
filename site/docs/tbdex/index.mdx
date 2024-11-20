@@ -1,3 +1,5 @@
+import Web5Url from '@site/src/components/Web5Url';
+
 # Overview of tbDEX
 
 ## What is tbDEX?
@@ -12,7 +14,7 @@ After trust establishment, tbDEX’s standard messaging protocol enables [Partic
 
 Once transaction details are confirmed, participants execute and settle these transactions outside of the protocol with PFIs directly.
 
-tbDEX is architected on Web5 infrastructure, utilizing decentralized technologies such as [Decentralized Identifiers (DIDs)](/) and [Verifiable Credentials (VCs)](/).
+tbDEX is architected on Web5 infrastructure, utilizing decentralized technologies such as <Web5Url to="/decentralized-identifiers/what-are-dids">Decentralized Identifiers (DIDs)</Web5Url> and <Web5Url to="/verifiable-credentials/what-are-vcs">Verifiable Credentials (VCs)</Web5Url>.
 
 ## Why do we need tbDEX?
 
@@ -20,7 +22,7 @@ The web connected us all, but money and payments have not kept pace. The legacy 
 
 Decentralized and trustless systems eliminate barriers to seamless online financial services such as international money movement.
 Yet, legacy fiat systems are projected to stay integral to our financial systems for the foreseeable future.
-This is why our global financial system and the customers it serves need a smooth method to transition between fiat and digital currencies.
+This is why our global financial system and the customers it serves needs a smooth method to transition between fiat and digital currencies.
 
 Put simply, tbDEX is a messaging protocol that allows for the decentralized transfer of value.
 This simplicity provides the opportunity to build whatever you want on top of it.
@@ -34,7 +36,7 @@ This competitive landscape incentivizes PFIs to offer more reasonable transactio
 The integration into one protocol ensures that every wallet application has access to every participating financial institution, fostering a customer-centric environment where quality of service and cost-efficiency become key differentiators.
 
 This is transformative for smaller companies where the challenge to integrate with all wallet applications is too high.
-With tbDEX, financial institutions can adopt the protocol once and enable thousands of wallets.
+With tbDEX, finanicial institutions can adopt the protocol once and enable thousands of wallets.
 
 ## How does tbDEX work?
 
@@ -59,7 +61,12 @@ Using the tbDEX protocol, PFIs and Wallet Applications can exchange messages to 
 
 As part of negotiating a proposed transaction, PFIs and Wallet Applications message each other using the following tbDEX message types:
 
-- **Request for Quote (RFQ)**: a request for the PFI to provide a quote specifically for the user based on the transaction they are proposing, the payment methods provided, etc. The RFQ also includes the proof of required credentials.
+```json
+{
+  "messageType": "Request for Quote (RFQ)",
+  "details": "a request for the PFI to provide a quote specifically for the user based on the transaction they are proposing, the payment methods provided, etc."
+}
+```
 
 - **Quote**: a formal offer from a PFI detailing exactly what the user will receive in exchange for a specific currency or asset, as per their RFQ. It also includes the total fees associated with the chosen payment methods, instructions for making the payment and receiving the funds, and an expiration time after which the terms of the quote are no longer guaranteed.
 
@@ -75,78 +82,20 @@ Alice holds a digital wallet application that securely manages her identity, inc
 Alice wants to exchange 100 units of digital currency for USD.
 Because Alice is off-ramping from digital currency to fiat, a PFI will likely require verification of Alice’s identity in order to fulfill their regulatory and compliance obligations.
 
-1.  **Alice** informs her wallet of her need to make the transaction.
+1. **Alice** informs her wallet of her need to make the transaction.
 
-2.  **Alice's Wallet** discovers PFIs that offer this currency pairing, compares their credential requirements with the VCs Alice holds, and if necessary, applies for any missing VCs.
+2. **Alice's Wallet** discovers PFIs that offer this currency pairing, compares their credential requirements with the VCs Alice holds, and if necessary, applies for any missing VCs.
 
-<details></details>
 <summary>Related Guides</summary>
 
-    - [Onboard as PFI](/)
-    - [Allowlist PFIs](/docs/tbdex/wallet/allowlist-pfis)
-    - [Present Credentials](/docs/tbdex/wallet/managing-credentials)
+- [Onboard as PFI](/docs/tbdex/pfi/onboarding)
+- [Allowlist PFIs](/docs/tbdex/wallet/allowlist-pfis)
+- [Present Credentials](/docs/tbdex/wallet/managing-credentials)
 
-3.  The **Credential Issuer** (if applicable) issues the required VCs to Alice, which are stored in her wallet.
-
-    <summary>Related Guides</summary>
-
-        - [Setup Credential Issuance Service](/docs/tbdex/issuer/vc-issuance)
-        - [Issue a VC](/)
-
-4.  **Alice’s Wallet** presents the offerings to Alice, allowing her to choose the one she’d like to transact with.
+3.  **Credential Issuer** issues the required VCs to Alice, stored in her wallet.
 
     <summary>Related Guides</summary>
 
-        - [Get Offerings](/docs/tbdex/wallet/get-offerings)
+    - <Web5Url to="/verifiable-credentials/vc-issuance">Issue a VC</Web5Url>
 
-5.  **Alice** considers various factors such as the reputation of the PFIs as well as the transaction fees before choosing a PFI.
-
-6.  **Alice's Wallet** creates a request for a quote (RFQ) with Alice's DID, the details of her request, and the required VC - which Alice has already obtained previously.
-
-    <summary>Related Guides</summary>
-
-        - [Send RFQs](/docs/tbdex/wallet/send-rfq)
-
-7.  The **PFI** receives the RFQ, verifies the credentials, and responds with a quote.
-
-    <summary>Related Guides</summary>
-
-        - [Create Quotes](/docs/tbdex/pfi/creating-quotes)
-
-8.  **Alice's Wallet** accepts the quote by placing the order.
-
-    <summary>Related Guides</summary>
-
-        - [Place Orders](/docs/tbdex/wallet/place-order)
-        - [Cancel Exchange](/docs/tbdex/wallet/receive-quote#cancel-exchange)
-
-9.  The **PFI** sends order statuses to the Wallet to update Alice about the order.
-
-    <summary>Related Guides</summary>
-
-        - [PFI: Process Orders](/docs/tbdex/pfi/processing-orders)
-        - [Wallet: Listen for Order Status Updates](/docs/tbdex/wallet/place-order#listen-for-order-status-updates)
-
-10. The **PFI** fulfills the order then sends a close message to Alice’s Wallet.
-
-        <details>
-
-    <summary>Related Guides</summary>
-
-        - [PFI: Close Order](/docs/tbdex/pfi/processing-orders#close-the-order)
-        - [Wallet: Receive Close Message](/docs/tbdex/wallet/place-order#receive-close-message)
-        - [Wallet: Cancel Exchange](/docs/tbdex/wallet/receive-quote#cancel-exchange)
-
-        </details>
-
-## Try tbDEX
-
-By leveraging decentralized technologies, tbDEX:
-
-- Offers a permissionless and inclusive platform that allows for the transfer of funds across different currency systems and borders
-
-- Promotes competition among PFIs, ensuring more equitable transaction fees and services for users
-
-- Provides tools to meet regulatory requirements, including identity verifications
-
-As a result, tbDEX offers a versatile solution for seamless financial transactions for developers, institutions, and individuals alike. If you’re ready to build your own applications using tbDEX, check out our [SDKs](https://github.com/TBD54566975/tbdex).
+      ...

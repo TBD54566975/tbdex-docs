@@ -17,6 +17,8 @@ const algoliaApiKey = process.env.DOC_SEARCH_API_KEY;
 const algoliaIndexName = process.env.DOC_SEARCH_INDEX_NAME;
 const algoliaAppId = process.env.DOC_SEARCH_APP_ID;
 
+const WEB5_DOCS_BASE_URL = process.env.WEB5_DOCS_BASE_URL;
+
 const feedbackWidgetApiUrl = process.env.FEEDBACK_WIDGET_API_URL;
 
 let algoliaConfig = null;
@@ -49,6 +51,7 @@ let config = {
     WEB5_VERSION,
     feedbackWidgetApiUrl,
     SDK_VERSIONS,
+    WEB5_DOCS_BASE_URL,
   },
   plugins: ['docusaurus-tailwindcss', './webpackPlugin.js'],
   scripts: [

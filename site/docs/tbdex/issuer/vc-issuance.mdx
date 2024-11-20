@@ -8,7 +8,7 @@ hide_title: true
 
 # Credential Issuance
 
-This guide introduces how to issue [verifiable credentials (VC)](/), a process for establishing trust between [Wallets](/docs/tbdex/wallet/overview) and [PFIs](/docs/tbdex/pfi/overview) in a tbDEX network.
+This guide introduces how to issue [verifiable credentials (VC)](/docs/web5/verifiable-credentials/what-are-vcs), a process for establishing trust between [Wallets](/docs/tbdex/wallet/overview) and [PFIs](/docs/tbdex/pfi/overview) in a tbDEX network.
 
 Common examples of credentials that are necessary in financial transactions are ones that verify the identity of a Wallet owner.
 
@@ -18,11 +18,11 @@ Although credential issuance is not a concept that is exclusive to tbDEX, it's a
 
 A Credential Issuance app operates as an API service, exposing endpoints for third parties to request credentials.
 
-If you already have an Issuance app up and running, check out the guide on [how to issue credentials with Web5](/).
+If you already have an Issuance app up and running, check out the guide on [how to issue credentials with Web5](/docs/web5/verifiable-credentials/vc-issuance/).
 
 ## Environment Setup
 
-If you need to create a Credential Issuance app from scratch, check out the [Credential Issuance Server Setup Guide](/) for detailed instructions on the dependencies and packages needed to set up your server.
+If you need to create a Credential Issuance app from scratch, check out the [Credential Issuance Server Setup Guide](/docs/tbdex/issuer/vc-serverSetup) for detailed instructions on the dependencies and packages needed to set up your server.
 
 :::note
 If you'd like to view a full, runnable project, see our [VC Issuer Example](https://github.com/TBD54566975/super-simple-sanctions).
@@ -79,10 +79,10 @@ If all checks pass, you'll issue them a credential.
 />
 
 :::tip Signing credentials
-Signing will return a [VC JSON Web Token](/), which is ideal for secure transmission of the credential.
+Signing will return a [VC JSON Web Token](/docs/web5/verifiable-credentials/jwt-to-vc#what-is-a-jwt), which is ideal for secure transmission of the credential.
 
 A BearerDid is used to sign Verifiable Credentials that you issue.
-Refer to the [Create A DID](/) guide for steps on how to create one.
+Refer to the [Create A DID](/docs/web5/decentralized-identifiers/how-to-create-did) guide for steps on how to create one.
 :::
 
 <LanguageSwitchBlock>
