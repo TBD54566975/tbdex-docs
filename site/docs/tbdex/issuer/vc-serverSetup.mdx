@@ -4,6 +4,8 @@ title: Server Setup
 hide_title: true
 ---
 
+import Web5Url from '@site/src/components/Web5Url';
+
 <LanguageSwitcher languages="JavaScript, Kotlin" />
 
 # Credential Issuance Server Setup
@@ -34,17 +36,19 @@ This example demonstrates how to use Express to set up the VC issuance service. 
 
 You'll also need to install `@web5/credentials` to create and issue credentials:
 
-<Dependencies languageDependencies={[
-  { language: 'javascript', dependencies: ['@web5/credentials'] },
-  { language: 'maven', dependencies: ['web5-credentials'] },
-  { language: 'gradle', dependencies: ['web5-credentials'] },
-]}/>
+<Dependencies
+  languageDependencies={[
+    { language: 'javascript', dependencies: ['@web5/credentials'] },
+    { language: 'maven', dependencies: ['web5-credentials'] },
+    { language: 'gradle', dependencies: ['web5-credentials'] },
+  ]}
+/>
 
 ### Create a DID
 
-Additionally, to issue credentials, you need a [Decentralized Identifier (DID)](/docs/web5/decentralized-identifiers/what-are-dids) which will serve as your Issuer's identity.
+Additionally, to issue credentials, you need a <Web5Url to="/decentralized-identifiers/what-are-dids">Decentralized Identifier (DID)</Web5Url>, which will serve as your Issuer's identity.
 
-If you don't already have one, you'll need to [create a DID](/docs/web5/decentralized-identifiers/how-to-create-did) with an IDV (Identity Verification) service endpoint:
+If you don't already have one, you'll need to <Web5Url to="/decentralized-identifiers/how-to-create-did">create a DID</Web5Url> with an IDV (Identity Verification) service endpoint:
 
 <Shnip
   snippets={[
@@ -69,7 +73,7 @@ If you have an existing DID you'll need to update that DID Document with an IDV 
       snippetName: 'updateADidWithServiceEndpointJS',
       language: 'JavaScript',
       title: 'did.js',
-    }
+    },
   ]}
   inlineSnippets={[
     {
@@ -89,7 +93,7 @@ If you have an existing DID you'll need to update that DID Document with an IDV 
 
 2. Within the file, import the necessary libraries:
 
-```kt title=Application.kt
+```kt
 import com.nimbusds.jwt.JWTParser
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -106,7 +110,7 @@ import web5.sdk.dids.Did
 
 3. To start your API service, add the following:
 
-```kt title=Application.kt
+```kt
 fun main() {
   embeddedServer(Netty, port = 8082) { // this can be any port you want to listen on
       configureRouting()
@@ -116,7 +120,7 @@ fun main() {
 
 4. In the same file, define your API routes:
 
-```kt title=Application.kt
+```kt
 fun Application.configureRouting() {
         routing {
             get("/example-route") {
@@ -139,13 +143,13 @@ fun Application.configureRouting() {
 
 2. Within the file, import the following:
 
-```js title=main.js
+```js
 import { api } from './api.js';
 ```
 
 3. To start your Express API service, add the following:
 
-```js title=main.js
+```js
 const config = {
   port: 3000, // this can be any port you want to listen on
 };
@@ -157,7 +161,7 @@ const server = api.listen(config.port, () => {
 
 4. Next, create an <code>api.js</code> file. This file will define the core API routes and logic for issuing credentials:
 
-```js title=api.js
+```js
 import express from 'express';
 import { VerifiableCredential, Jwt } from '@web5/credentials';
 

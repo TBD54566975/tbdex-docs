@@ -1,82 +1,44 @@
 ---
-sidebar_position: 2
-title: Required SDKs
-hide_title: true
+sidebar_position: 1
 ---
 
-<LanguageSwitcher languages="JavaScript, Kotlin, Swift" />
+import Web5Url from '@site/src/components/Web5Url';
 
-# Required SDKs
+# Wallet Overview
 
-To implement and operate as a Wallet on a tbDEX network, you’ll need to use the following SDKs:
+<div className="grid grid-cols-1 desktop:grid-cols-1">
+  <iframe
+    class="aspect-video"
+    src="https://www.youtube.com/embed/KiJH2pgwh5U"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
 
+Wallet applications serve as agents in facilitating transactions for individuals seeking liquidity offered by [Participating Financial Institutions (PFIs)](/docs/tbdex/pfi/overview).
+This network is instrumental in providing compliant and seamless transactions across various systems and international borders.
 
-* **web5/dids** - Enables the creation of [Decentralized Identifiers (DID)](/docs/web5/decentralized-identifiers/what-are-dids) for your customers and perform any other required cryptographic functions, you can use the DIDs package. Check out [Key Management Service](/docs/web5/decentralized-identifiers/key-management) for DIDs in production environments.
+As intermediaries, Wallets often manage <Web5Url to="/decentralized-identifiers/what-are-dids">Decentralized Identifiers (DIDs)</Web5Url> and <Web5Url to="/verifiable-credentials/what-are-vcs">Verifiable Credentials (VCs)</Web5Url> on behalf of their users.
+These elements are essential for identity verification and are strategically utilized during transactions to ensure security and compliance with regulatory standards.
 
-* **web5/credentials** - Enable the presentation of [Verifiable Credentials (VC)](/docs/web5/verifiable-credentials/what-are-vcs) to PFIs on your customers' behalf. You may also want to verify that the PFIs you wish to engage with have certain credentials.
+For a comprehensive understanding of how Wallet applications integrate and function within the broader tbDEX ecosystem, we recommend referring to the [tbDEX overview](/docs/tbdex/#example-scenario).
 
-* **tbdex/client** - Enables your application to send tbDEX messages to PFIs.
+The Wallet guides are designed to equip you with the necessary insights and tools to build your network of PFIs.
+This network enables you to effectively meet the diverse financial needs of your customers, fostering a secure and efficient transaction environment.
 
-## Install SDKs
+## Recommended Path
 
-<Dependencies languageDependencies={[
-  { language: 'javascript', dependencies: ['@web5/dids', '@web5/credentials', '@tbdex/http-client'] },
-  { language: 'maven', dependencies: ['web5-credentials','web5-dids','tbdex'] },
-  { language: 'gradle', dependencies:['web5-credentials','web5-dids','tbdex'] },
-  { language: 'swift', dependencies: ['Web5', 'tbDex'] },
-]}/>
-
-<LanguageSwitchBlock>
-  <div language="Kotlin">
-    <details>
-      <summary>Android Setup</summary>
-
-      In order to have a smooth Android development experience, we've found the following to be helpful. Firstly, be sure to exclude `META-INF/DEPENDENCIES` as follows in your `build.gradle.kts` file:
-
-      ```kotlin
-      android {
-          packagingOptions {
-              exclude("META-INF/DEPENDENCIES")
-          }
-      }
-      ```
-
-      Additionally, you'll want to modify your `dependencies` object to look like the following:
-
-      ```kotlin
-
-      dependencies {
-
-        implementation("xyz.block:tbdex-httpclient:0.11.0-beta") {
-            exclude(group = "com.google.protobuf", module = "protobuf-java")
-            exclude(group = "org.bouncycastle", module = "bcprov-jdk18on")
-            exclude(group = "com.github.stephenc.jcip", module = "jcip-annotations")
-            exclude(group = "com.google.crypto.tink", module="tink")
-        }
-
-        implementation("xyz.block:tbdex-protocol:0.11.0-beta") {
-            exclude(group = "com.google.protobuf", module = "protobuf-java")
-            exclude(group = "org.bouncycastle", module = "bcprov-jdk18on")
-            exclude(group = "com.github.stephenc.jcip", module = "jcip-annotations")
-            exclude(group = "com.google.crypto.tink", module="tink")
-
-        }
-
-      }
-      ```
-
-      Specifically, note the exclusion of a number of dependencies so that your app uses the versions of these libraries that are shipped with Android.
-    </details>
-  </div>
-</LanguageSwitchBlock>
-
-## Import Classes
-
-To send and receive tbDEX messages, import the following classes:
-
-<Shnip snippets={[
-    { snippetName: 'walletSdkImportJs', language: 'JavaScript'},
-    { snippetName: 'walletSdkImportSwift', language: 'Swift'},
-    { snippetName: 'walletSdkImportsKt', language: 'Kotlin'},
-  ]}
-  />
+1. [tbDEX Overview](/docs/tbdex/)
+2. [Review Message Types](/docs/tbdex/message-types)
+3. [Install Required SDKs](/docs/tbdex/wallet/required-sdks)
+4. [Create Network of PFIs](/docs/tbdex/wallet/allowlist-pfis)
+5. [Get Offerings](/docs/tbdex/wallet/get-offerings)
+6. <Web5Url to="/decentralized-identifiers/how-to-create-did/">
+     Create Customer's DID
+   </Web5Url>
+7. [Manage Credentials](/docs/tbdex/wallet/managing-credentials)
+8. [Request Quotes](/docs/tbdex/wallet/send-rfq)
+9. [Receive Quotes](/docs/tbdex/wallet/receive-quote)
+10. [Place Orders](/docs/tbdex/wallet/place-order)

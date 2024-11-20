@@ -9,52 +9,60 @@ import Version from '@site/src/components/Version';
 import PackageJson from '@site/src/components/PackageJson';
 import CodeSnippet from '@site/src/components/CodeSnippet';
 import WalletQuickstartCodeRunner from '@site/src/components/WalletQuickstartCodeRunner';
+import Web5Url from '@site/src/components/Web5Url';
 
 <QuickstartExecutionProvider>
+
 # tbDEX Wallet in 5️⃣ minutes
 
 ## Overview
 
 The role of a Wallet App in a tbDEX ecosystem is to find liquidity for its customers. Let’s build a tbDEX-enabled wallet in under 5 minutes. You will learn how to:
 
-✅  Integrate the tbDEX SDK into a wallet app
+✅ Integrate the tbDEX SDK into a wallet app
 
-✅  Connect a wallet app with a PFI (Participating Financial Institution)
+✅ Connect a wallet app with a PFI (Participating Financial Institution)
 
-✅  Use a wallet app to send tbDEX messages to a PFI to facilitate a transaction
-
-
+✅ Use a wallet app to send tbDEX messages to a PFI to facilitate a transaction
 
 Let’s go!
 
-
 ## Wallet App Basics
 
-In this exercise, your app is responsible for helping your customer, Alice, exchange `USD` for `KES`. First, we'll create a [DID (Decentralized Identifier)](/docs/web5/decentralized-identifiers/what-are-dids) for Alice.
+In this exercise, your app is responsible for helping your customer, Alice, exchange `USD` for `KES`. First, we'll create a <Web5Url to="/decentralized-identifiers/what-are-dids">DID (Decentralized Identifier)</Web5Url> for Alice.
 
 ### Create Customer's DID
 
-In order for you to communicate with PFIs on your customers' behalf, they will need a DID. Let's [create a DID](/docs/web5/decentralized-identifiers/how-to-create-did) for Alice now:
+In order for you to communicate with PFIs on your customers' behalf, they will need a DID. Let's <Web5Url to="/decentralized-identifiers/how-to-create-did">create a DID</Web5Url> for Alice now:
 
 <CodeSnippet snippetName="walletQuickstartDidCreate" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeDidCreate" stepIndex={0} customPlaceholder={"See Alice's DID"}/>
-
+<WalletQuickstartCodeRunner
+  executeCodeName="executeDidCreate"
+  stepIndex={0}
+  customPlaceholder={"See Alice's DID"}
+/>
 
 ## Connect to a PFI
 
 To connect to a PFI, all you need is their DID. Let's use the DID of a mock PFI:
 
-<CodeSnippet snippetName="walletQuickstartPfiDid"/>
-
+<CodeSnippet snippetName="walletQuickstartPfiDid" />
 
 ## Get Offerings
 
 All PFIs have [Offerings](/docs/tbdex/message-types#offerings) which are a menu of services they provide. Offerings describe the currency pairs and transaction parameters offered. Let's fetch all of the offerings from the PFI:
 
-<CodeSnippet snippetName="walletQuickstartGetOfferings"/>
+<CodeSnippet snippetName="walletQuickstartGetOfferings" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeGetOfferings" stepIndex={1} autoOpenDetails={false} customPlaceholder={"See the PFI's Offerings"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeGetOfferings"
+  stepIndex={1}
+  autoOpenDetails={false}
+  customPlaceholder={"See the PFI's Offerings"}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 Once you have all of the PFI's offerings, you can filter it based on a variety of factors, including the currency pair you're looking for. In this case, you're looking for an offering that exchanges `USD` for `KES`:
 
@@ -62,7 +70,7 @@ Once you have all of the PFI's offerings, you can filter it based on a variety o
 
 #### Obtain Verifiable Credentials
 
-The Offering we selected has a `requiredClaims` section that specifies [Verifiable Credentials](/docs/web5/verifiable-credentials/what-are-vcs) (VCs) Alice needs in order to be eligible for the Offering. This PFI requires Alice to have a credential whose `credentialSchema` matches the schema of the `KnownCustomerCredential`, as outlined in the `requiredClaims` section of the Offering. Additionally, that credential must be issued by a specific issuer as described by the issuer's DID below:
+The Offering we selected has a `requiredClaims` section that specifies <Web5Url to="/verifiable-credentials/what-are-vcs">Verifiable Credentials</Web5Url> (VCs) Alice needs in order to be eligible for the Offering. This PFI requires Alice to have a credential whose `credentialSchema` matches the schema of the `KnownCustomerCredential`, as outlined in the `requiredClaims` section of the Offering. Additionally, that credential must be issued by a specific issuer as described by the issuer's DID below:
 
 ```js
 {"requiredClaims": {
@@ -87,9 +95,7 @@ The Offering we selected has a `requiredClaims` section that specifies [Verifiab
                     ],
                     "filter": {
                       "type": "string",
-                      //highlight-start
                       "const": "https://vc.schemas.host/kcc.schema.json"
-                      //highlight-end
                     }
                   },
                   {
@@ -99,9 +105,7 @@ The Offering we selected has a `requiredClaims` section that specifies [Verifiab
                     ],
                     "filter": {
                       "type": "string",
-                      //highlight-start
                       "const": "did:dht:bh8me68fsdb6xuyy3dsh4aanczexga3k3m7fk4ie6hj5jy6inq5y"
-                      //highlight-end
                     }
                   }
                 ]
@@ -114,7 +118,11 @@ The Offering we selected has a `requiredClaims` section that specifies [Verifiab
 
 As a result, we'll help Alice apply for the `SanctionsCredential` she needs to satisfy the PFI's requirements:
 
-<WalletQuickstartCodeRunner executeCodeName="executeApplyForCredential" stepIndex={2} customPlaceholder={"Apply for an example Known Customer Credential"}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeApplyForCredential"
+  stepIndex={2}
+  customPlaceholder={'Apply for an example Known Customer Credential'}
+/>
 
 VCs are stored as JSON Web Tokens (JWTs). Your wallet app has saved Alice's new VC into an array named `customerCredentials`. Let's now select Alice’s credential to meet the PFI's requirements:
 
@@ -126,7 +134,13 @@ Now that you've found an offering that matches Alice's request, your app can req
 
 <CodeSnippet snippetName="walletQuickstartCreateRfq" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeCreateRfq" stepIndex={3} customPlaceholder={"See the RFQ"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeCreateRfq"
+  stepIndex={3}
+  customPlaceholder={'See the RFQ'}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 After creating an RFQ message, you can verify that it is properly constructed and its data satisfies the Offering's requirements.
 
@@ -136,7 +150,13 @@ Then finally, you'll send the RFQ to the PFI to initiate the transaction.
 
 <CodeSnippet snippetName="walletQuickstartSendRfq" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeSendRfq" stepIndex={4} customPlaceholder={"Submit RFQ"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeSendRfq"
+  stepIndex={4}
+  customPlaceholder={'Submit RFQ'}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 ## Process Quote
 
@@ -144,7 +164,13 @@ In response to your RFQ, the PFI will write a Quote message to the exchange if t
 
 <CodeSnippet snippetName="walletQuickstartProcessQuote" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeProcessQuote" stepIndex={5} customPlaceholder={"View Quote"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeProcessQuote"
+  stepIndex={5}
+  customPlaceholder={'View Quote'}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 ## Place Order
 
@@ -152,13 +178,25 @@ The Quote contains the exact exchange rate including any fees. Your app can pres
 
 <CodeSnippet snippetName="walletQuickstartCreateOrder" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeCreateOrder" stepIndex={6} customPlaceholder={"Create Alice's Order"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeCreateOrder"
+  stepIndex={6}
+  customPlaceholder={"Create Alice's Order"}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 Once you have an order message, you can sign it with Alice's DID and send it to the PFI to execute the transaction.
 
 <CodeSnippet snippetName="walletQuickstartSubmitOrder" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeSendOrder" stepIndex={7} customPlaceholder={"Submit Order to PFI"} viewJsonObj={true} collapseLevel={2}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeSendOrder"
+  stepIndex={7}
+  customPlaceholder={'Submit Order to PFI'}
+  viewJsonObj={true}
+  collapseLevel={2}
+/>
 
 ## End Transaction
 
@@ -166,7 +204,11 @@ To end the transaction, the PFI will write a Close message indicating whether th
 
 <CodeSnippet snippetName="walletQuickstartProcessClose" />
 
-<WalletQuickstartCodeRunner executeCodeName="executeProcessClose" stepIndex={8} customPlaceholder={"View your close reason"}/>
+<WalletQuickstartCodeRunner
+  executeCodeName="executeProcessClose"
+  stepIndex={8}
+  customPlaceholder={'View your close reason'}
+/>
 
 ## Next Steps with tbDEX
 

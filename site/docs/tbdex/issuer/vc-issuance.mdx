@@ -4,11 +4,13 @@ title: Credential Issuance
 hide_title: true
 ---
 
+import Web5Url from '@site/src/components/Web5Url';
+
 <LanguageSwitcher languages="JavaScript, Kotlin" />
 
 # Credential Issuance
 
-This guide introduces how to issue [verifiable credentials (VC)](/docs/web5/verifiable-credentials/what-are-vcs), a process for establishing trust between [Wallets](/docs/tbdex/wallet/overview) and [PFIs](/docs/tbdex/pfi/overview) in a tbDEX network.
+This guide introduces how to issue <Web5Url to="/verifiable-credentials/what-are-vcs">verifiable credentials (VC)</Web5Url>, a process for establishing trust between [Wallets](/docs/tbdex/wallet/overview) and [PFIs](/docs/tbdex/pfi/overview) in a tbDEX network.
 
 Common examples of credentials that are necessary in financial transactions are ones that verify the identity of a Wallet owner.
 
@@ -18,7 +20,7 @@ Although credential issuance is not a concept that is exclusive to tbDEX, it's a
 
 A Credential Issuance app operates as an API service, exposing endpoints for third parties to request credentials.
 
-If you already have an Issuance app up and running, check out the guide on [how to issue credentials with Web5](/docs/web5/verifiable-credentials/vc-issuance/).
+If you already have an Issuance app up and running, check out the guide on <Web5Url to="/verifiable-credentials/vc-issuance/">how to issue credentials with Web5</Web5Url>.
 
 ## Environment Setup
 
@@ -79,10 +81,10 @@ If all checks pass, you'll issue them a credential.
 />
 
 :::tip Signing credentials
-Signing will return a [VC JSON Web Token](/docs/web5/verifiable-credentials/jwt-to-vc#what-is-a-jwt), which is ideal for secure transmission of the credential.
+Signing will return a <Web5Url to="/verifiable-credentials/jwt-to-vc#what-is-a-jwt">VC JSON Web Token</Web5Url>, which is ideal for secure transmission of the credential.
 
 A BearerDid is used to sign Verifiable Credentials that you issue.
-Refer to the [Create A DID](/docs/web5/decentralized-identifiers/how-to-create-did) guide for steps on how to create one.
+Refer to the <Web5Url to="/decentralized-identifiers/how-to-create-did">Create A DID</Web5Url> guide for steps on how to create one.
 :::
 
 <LanguageSwitchBlock>
@@ -122,15 +124,15 @@ The `sanctions_credential` object that's returned will be a raw VC that looks li
 
 ```json
 vcDataModel: {
-  "@context": [ "https://www.w3.org/2018/credentials/v1" ],
-  type: [ "VerifiableCredential", "SanctionsCredential" ],
-  id: "urn:uuid:daa5ff01-9b7d-485b-9410-22a42952d46c",
-  issuer: "did:dht:yqun8fjakb7afu3rau9rhgdo4ahru9d68488e5mu5ihbaiwqjh3y",
-  issuanceDate: "2023-12-14T08:20:41Z",
-  credentialSubject: {
-    id: "did:dht:z6MkjGSeekPGE9QfczHWyW8v2ZzJU68kqSHzV7L2dmQyuyDu",
-    listsCleared: "FBI's Most Wanted", "USA Watchlist", "EU Watchlist"
-  }
+"@context": [ "https://www.w3.org/2018/credentials/v1" ],
+type: [ "VerifiableCredential", "SanctionsCredential" ],
+id: "urn:uuid:daa5ff01-9b7d-485b-9410-22a42952d46c",
+issuer: "did:dht:yqun8fjakb7afu3rau9rhgdo4ahru9d68488e5mu5ihbaiwqjh3y",
+issuanceDate: "2023-12-14T08:20:41Z",
+credentialSubject: {
+id: "did:dht:z6MkjGSeekPGE9QfczHWyW8v2ZzJU68kqSHzV7L2dmQyuyDu",
+listsCleared: "FBI's Most Wanted", "USA Watchlist", "EU Watchlist"
+}
 }
 ```
 
@@ -143,15 +145,15 @@ vcDataModel: {
 
 ```json
 {
-  "@context": [ "https://www.w3.org/2018/credentials/v1" ],
-  type: [ "VerifiableCredential", "SanctionsCredential" ],
-  id: "urn:uuid:daa5ff01-9b7d-485b-9410-22a42952d46c",
-  issuer: "did:dht:yqun8fjakb7afu3rau9rhgdo4ahru9d68488e5mu5ihbaiwqjh3y",
-  issuanceDate: "2023-12-14T08:20:41Z",
-  credentialSubject: {
-    id: "did:dht:z6MkjGSeekPGE9QfczHWyW8v2ZzJU68kqSHzV7L2dmQyuyDu",
-    listsCleared: "FBI's Most Wanted", "USA Watchlist", "EU Watchlist"
-  }
+"@context": [ "https://www.w3.org/2018/credentials/v1" ],
+type: [ "VerifiableCredential", "SanctionsCredential" ],
+id: "urn:uuid:daa5ff01-9b7d-485b-9410-22a42952d46c",
+issuer: "did:dht:yqun8fjakb7afu3rau9rhgdo4ahru9d68488e5mu5ihbaiwqjh3y",
+issuanceDate: "2023-12-14T08:20:41Z",
+credentialSubject: {
+id: "did:dht:z6MkjGSeekPGE9QfczHWyW8v2ZzJU68kqSHzV7L2dmQyuyDu",
+listsCleared: "FBI's Most Wanted", "USA Watchlist", "EU Watchlist"
+}
 }
 ```
 
@@ -192,7 +194,7 @@ node main.js
 2. In a new terminal window send a test request. Below is an example command using `curl` that includes a JWT for authorization:
 
 ```bash
- curl -X GET http://localhost:3000/check-sanctions -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSIsImtpZCI6ImRpZDprZXk6ejZNa3djSmkzeVVONDJFZ1N2cmNHRlFyQzRKY1pkenlWWkhQOVdmMXFRZWRuVlRQI3o2TWt3Y0ppM3lVTjQyRWdTdnJjR0ZRckM0SmNaZHp5VlpIUDlXZjFxUWVkblZUUCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwiSWRlbnRpZmljYXRpb25DcmVkZW50aWFsIl0sImlkIjoidXJuOnV1aWQ6MDQ3ZTg0ZWItY2NhMS00NjFlLWFjZjAtMGMyZGE5ZDczOTNhIiwiaXNzdWVyIjoiZGlkOmtleTp6Nk1rd2NKaTN5VU40MkVnU3ZyY0dGUXJDNEpjWmR6eVZaSFA5V2YxcVFlZG5WVFAiLCJpc3N1YW5jZURhdGUiOiIyMDI0LTAyLTE1VDE5OjMyOjE2WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiZGlkOmtleTp6Nk1rd2NKaTN5VU40MkVnU3ZyY0dGUXJDNEpjWmR6eVZaSFA5V2YxcVFlZG5WVFAiLCJuYW1lIjoiam9obiJ9fSwiaXNzIjoiZGlkOmtleTp6Nk1rd2NKaTN5VU40MkVnU3ZyY0dGUXJDNEpjWmR6eVZaSFA5V2YxcVFlZG5WVFAiLCJzdWIiOiJkaWQ6a2V5Ono2TWt3Y0ppM3lVTjQyRWdTdnJjR0ZRckM0SmNaZHp5VlpIUDlXZjFxUWVkblZUUCJ9.7oFAPckx-vxCbbzKSk9bU7eXlnjBFvMborl9woHCbcvWaLt0LvTRuDfvGDPC24V9D1K5OFpTnnBiN5jtIOmbBg"
+curl -X GET http://localhost:3000/check-sanctions -H "Authorization: Bearer [TOKEN]"
 ```
 
 With that, you've implemented a basic credential issuance service to accept requests and issue VCs.
