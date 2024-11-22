@@ -175,7 +175,7 @@ cp .env.example .env
 Then modify the parameters according to the feature you want to use. Check their instructions below:
 
 - `FEEDBACK_WIDGET_API_URL`: Enables the feedback widget API URL; see [Feedback server app instructions](./apps/feedback-server/README.md)
-- `DOC_SEARCH_*`: Enables the search bar powered by Algolia; see [Algolia connecting instructions](https://docusaurus.io/docs/search#connecting-algolia)
+- `DOC_SEARCH_*`: Enables the search bar powered by Algolia; see [Algolia connecting instructions](https://docusaurus.io/search#connecting-algolia)
 
 Remember, when these environment variables are not set, these features are disabled by default.
 

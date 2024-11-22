@@ -8,7 +8,7 @@ sidebar_position: 9
 
 # Placing Orders
 
-Once the PFI writes a [Quote](/docs/tbdex/wallet/receive-quote) message to the exchange in response to an [RFQ](/docs/tbdex/wallet/send-rfq), you'd present that Quote to your customer and give them the option to place an **Order**.
+Once the PFI writes a [Quote](/tbdex/wallet/receive-quote) message to the exchange in response to an [RFQ](/tbdex/wallet/send-rfq), you'd present that Quote to your customer and give them the option to place an **Order**.
 
 If the customer chooses to place the order, your application will create an Order object, send it to the PFI, listen for status updates, and wait until the order is closed.
 
@@ -26,7 +26,7 @@ This instantiates a new Order, including metadata such as the customer's DID, th
 
 ## Sign Order
 
-Then sign the Order with the customer's [Portable DID](/docs/glossary#portable-did):
+Then sign the Order with the customer's [Portable DID](/glossary#portable-did):
 
 <Shnip
   snippets={[
@@ -52,7 +52,7 @@ After creating and signing the Order, it needs to be sent to the PFI via the fol
 As the PFI is processing the Order, they'll provide `OrderStatus` messages. 
 Your application would likely want to show these status updates to your customer to keep them informed of progress.
 
-If you provided a [callback URI](/docs/tbdex/wallet/send-rfq#send-rfq-to-pfi) when sending the RFQ, the PFI will send the `OrderStatus` messages there.
+If you provided a [callback URI](/tbdex/wallet/send-rfq#send-rfq-to-pfi) when sending the RFQ, the PFI will send the `OrderStatus` messages there.
 
 Otherwise, the PFI will write the `OrderStatus` messages to the exchange to keep you posted on the Order's status, and your application can poll the exchange to continuously check for `OrderStatus` messages until a `Close` message has been written to the exchange:
 

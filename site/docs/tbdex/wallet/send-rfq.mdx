@@ -8,12 +8,12 @@ sidebar_position: 7
 
 # Sending RFQs
 
-After your customer selects an [Offering](/docs/tbdex/pfi/creating-offerings), the next step is to send a **Request for Quote (RFQ)** to the PFI in order to initiate the transaction.
+After your customer selects an [Offering](/tbdex/pfi/creating-offerings), the next step is to send a **Request for Quote (RFQ)** to the PFI in order to initiate the transaction.
 The Offering provided an estimate, but the Quote will provide a formal offer based on the financial transaction the customer is requesting as well as the payment methods provided.
 
 ## Create the RFQ
 An RFQ is a structured tbDEX message that specifies the details of the transaction your customer wishes to make.
-It includes information about the Offering, payment methods, and any required [verifiable credentials (VCs)](/docs/tbdex/wallet/managing-credentials).
+It includes information about the Offering, payment methods, and any required [verifiable credentials (VCs)](/tbdex/wallet/managing-credentials).
 
 To create the message, construct an RFQ passing metadata and data:
 
@@ -47,7 +47,7 @@ The data properties contain the specifics of the transaction, such as the id of 
 * **payout** - How the customer wishes to receive the payout from the PFI
   * **kind** - Type of payment method e.g. BTC_ADDRESS, BANK_ACCOUNT, MOMO_MPESA
   * **paymentDetails** - The exact details of the payment method. As this information is sensitive, the SDK will convert these details into [salted hashes](https://github.com/TBD54566975/tbdex/tree/main/specs/protocol#privatedata-1)
-* **claims** - The [VCs that satisfy the requirements of the Offer](/docs/tbdex/wallet/managing-credentials#select-credentials-that-satisfy-requirements). As this information is sensitive, the SDK will convert these details into [salted hashes](https://github.com/TBD54566975/tbdex/tree/main/specs/protocol#privatedata-1)
+* **claims** - The [VCs that satisfy the requirements of the Offer](/tbdex/wallet/managing-credentials#select-credentials-that-satisfy-requirements). As this information is sensitive, the SDK will convert these details into [salted hashes](https://github.com/TBD54566975/tbdex/tree/main/specs/protocol#privatedata-1)
 
 <Shnip
   snippets={[
@@ -89,7 +89,7 @@ This will throw an error for any of the following:
 
 
 ## Sign the RFQ
-Signing the RFQ ensures its authenticity. You can do so with the customer's [Bearer DID](/docs/glossary#bearer-did):
+Signing the RFQ ensures its authenticity. You can do so with the customer's [Bearer DID](/glossary#bearer-did):
 
 <Shnip
   snippets={[
@@ -112,8 +112,8 @@ This exchange serves as a thread of messages between your application and the PF
   ]}
 />
 
-The next message written to the exchange will be a [Quote](/docs/tbdex/wallet/receive-quote) from the PFI.
-You'll need to [poll the PFI](/docs/tbdex/wallet/receive-quote#polling-for-quote) to receive the `Quote` and all other messages within the exchange, unless you provide an `replyTo` callback when sending the RFQ.
+The next message written to the exchange will be a [Quote](/tbdex/wallet/receive-quote) from the PFI.
+You'll need to [poll the PFI](/tbdex/wallet/receive-quote#polling-for-quote) to receive the `Quote` and all other messages within the exchange, unless you provide an `replyTo` callback when sending the RFQ.
 
 ### Optional Callback
 If your wallet application has a deployed server, you can provide a callback when sending the RFQ.
@@ -123,7 +123,7 @@ If `replyTo` is provided, the PFI will send all new messages of the exchange to 
 This URI is scoped to each exchange, allowing you to specify a different URI per exchange if desired. 
 
 :::tip No Callback
-If a callback is not provided, you'll need to [poll the PFI](/docs/tbdex/wallet/receive-quote#polling-for-quote) to receive the `Quote` and all other messages within the exchange.
+If a callback is not provided, you'll need to [poll the PFI](/tbdex/wallet/receive-quote#polling-for-quote) to receive the `Quote` and all other messages within the exchange.
 :::
 
 #### Callback as a URL

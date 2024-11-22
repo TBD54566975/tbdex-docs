@@ -106,7 +106,7 @@ let config = {
         {
           type: 'doc',
           docId: 'index',
-          to: '/docs',
+          to: '',
           label: 'Docs',
           position: 'left',
         },
@@ -120,7 +120,7 @@ let config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/',
+              to: '/',
             },
           ],
         },

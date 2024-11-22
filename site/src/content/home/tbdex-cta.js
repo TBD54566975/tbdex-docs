@@ -16,7 +16,7 @@ function tbdexCTA() {
       <div className="grid grid-cols-1 desktop:grid-cols-2 gap-4">
         <HeroCard
           heroText="tbDEX SDK"
-          buttonUrl="/docs/tbdex"
+          buttonUrl="/tbdex"
           buttonText="Talk money to me"
           bodyText="An open source messaging service that enables wallet applications to communicate with financial institutions to discover and obtain liquidity."
           themeColor="cyan"
@@ -25,7 +25,7 @@ function tbdexCTA() {
         />
         <HeroCard
           heroText="Web5 SDK"
-          buttonUrl="/docs/web5"
+          buttonUrl="/web5"
           buttonText="Prove Yourself"
           bodyText="An open source library for creating and resolving Decentralized Identifiers, as well as issuing, presenting and verifying Verifiable Credentials."
           themeColor="cyan"

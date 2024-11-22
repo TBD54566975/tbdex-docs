@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Web5Url = ({ to, children }) => {
-  const baseUrl = 'http://web5_url_here/docs/web5';
+  const baseUrl = 'http://web5_url_here/web5';
   const fullUrl = `${baseUrl}${to}`;
 
   return (

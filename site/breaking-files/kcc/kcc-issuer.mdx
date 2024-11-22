@@ -22,12 +22,12 @@ In this guide, we'll cover:
 - Issuing a KCC conformant with [OpenID for Verifiable Credential Issuance (OID4VCI)](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) following successful IDV.
 
 :::info
-For a detailed guide on managing Known Customer Credentials as a Wallet application, please refer to the [Known Customer Credential Guide for Wallet Apps](/docs/tbdex/issuer/kcc/kcc-wallet)
+For a detailed guide on managing Known Customer Credentials as a Wallet application, please refer to the [Known Customer Credential Guide for Wallet Apps](/tbdex/issuer/kcc/kcc-wallet)
 :::
 
 ## Environment Setup
 
-If you haven't already, please follow the [Credential Issuance Server Setup Guide](/docs/tbdex/issuer/vc-serverSetup) for detailed instructions on the dependencies and packages needed to set up your server.
+If you haven't already, please follow the [Credential Issuance Server Setup Guide](/tbdex/issuer/vc-serverSetup) for detailed instructions on the dependencies and packages needed to set up your server.
 
 ## IDV Process
 
@@ -70,7 +70,7 @@ D->>D: Verify IDV Request
 D->>W: Load URL in IDV Request
 ```
 
-The IDV flow begins when the customer's agent (e.g. Wallet application) sends an HTTP request to the Issuer's [IDV service endpoint](https://hackmd.io/4cW3D9BVQGCEuf1CEg47jA?both#Issuers-Identity) specified in the Issuer's [Decentralized Identifier (DID) Document](/docs/glossary#did-document).
+The IDV flow begins when the customer's agent (e.g. Wallet application) sends an HTTP request to the Issuer's [IDV service endpoint](https://hackmd.io/4cW3D9BVQGCEuf1CEg47jA?both#Issuers-Identity) specified in the Issuer's [Decentralized Identifier (DID) Document](/glossary#did-document).
 
 ### 1. Handling Incoming Requests
 
@@ -118,7 +118,7 @@ When a Verifiable Presentation is an accepted form of IDV, you can respond to th
   ]}
 />
 
-The SOIPv2 Authorization request above that you as the issuer send to your customer contains the following key information about you as well as a [Presentation Definition](/docs/web5/verifiable-credentials/presentation-definition).
+The SOIPv2 Authorization request above that you as the issuer send to your customer contains the following key information about you as well as a [Presentation Definition](/web5/verifiable-credentials/presentation-definition).
 
 - **`client_id`**: Issuer's DID, establishing the issuer/requestor's identity.
 - **`response_type`**: Lets the Wallet know the desired format, with `id_token` being required identity token and `vp_token` for _optional_ verifiable presentation token. The inclusion of `vp_token` means a presentation definition is required within the request.
@@ -126,7 +126,7 @@ The SOIPv2 Authorization request above that you as the issuer send to your custo
 - **`nonce`**: A unique identifier tying together the request and its response.
 
 :::note
-`vp_token` is a [Verifiable Presentation](/docs/glossary#verifiable-presentation) that contains certified and authenticated claims about the customer. In this guide, we'll cover an example `vp_token`. To learn more refer to [OpenID's specs](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-6.1-2.2).
+`vp_token` is a [Verifiable Presentation](/glossary#verifiable-presentation) that contains certified and authenticated claims about the customer. In this guide, we'll cover an example `vp_token`. To learn more refer to [OpenID's specs](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-6.1-2.2).
 :::
 
 ### 2. Encode the SIOPv2 Authorization Request and respond:
@@ -406,7 +406,7 @@ Before issuing a Known Customer Credential, it's important to complete all neces
 - Signing will return a VC [JSON Web Token](https://jwt.io/), which is ideal for secure transmission of the credential.
   :::
 
-To convert the signed VC JWT into a `VerifiableCredential` object you can use the [`parseJwt()` method](/docs/web5/verifiable-credentials/jwt-to-vc#decoding-jwt). Here is what your decoded **Known Customer Credential** would look like:
+To convert the signed VC JWT into a `VerifiableCredential` object you can use the [`parseJwt()` method](/web5/verifiable-credentials/jwt-to-vc#decoding-jwt). Here is what your decoded **Known Customer Credential** would look like:
 
 <LanguageSwitchBlock>
   <div language="JavaScript">

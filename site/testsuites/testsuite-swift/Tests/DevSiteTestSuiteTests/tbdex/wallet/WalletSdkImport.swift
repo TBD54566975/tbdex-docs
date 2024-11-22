@@ -1,5 +1,5 @@
 // The Swift Programming Language
-// https://docs.swift.org/swift-book
+// https:/.swift.org/swift-book
 
 // :snippet-start: walletSdkImportSwift
 import Web5

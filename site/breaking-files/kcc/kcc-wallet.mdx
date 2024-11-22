@@ -19,7 +19,7 @@ In this guide, we'll cover:
 - **Credential Management**: How the Wallet utilizes existing credentials for KCC requests and securely stores the KCC itself.
 
 :::info
-For a detailed guide on Known Customer Credentials for **Issuers**, please refer to the [Issuer's Known Customer Credential Guide](/docs/tbdex/issuer/kcc/kcc-issuer)
+For a detailed guide on Known Customer Credentials for **Issuers**, please refer to the [Issuer's Known Customer Credential Guide](/tbdex/issuer/kcc/kcc-issuer)
 :::
 
 ## Environment Setup
@@ -195,7 +195,7 @@ Send an HTTP request to the IDV Service Endpoint:
 />
 
 The Issuer will then respond with a [SIOPv2 Authorization Request](https://openid.github.io/SIOPv2/openid-connect-self-issued-v2-wg-draft.html#section-) in the [JWT-Secured Authorization Request (JAR)](https://www.rfc-editor.org/rfc/rfc9101.html) format.
-This request contains information about the Issuer along with a [Presentation Definition](https://developer.tbd.website/docs/web5/verifiable-credentials/presentation-definition). Some of the key information included is:
+This request contains information about the Issuer along with a [Presentation Definition](https://developer.tbd.website/web5/verifiable-credentials/presentation-definition). Some of the key information included is:
 
 - **`client_id`**: Issuer's DID, establishing the Issuer/requestor's identity.
 - **`response_type`**: Indicates the desired format (e.g., `id_token`, `vp_token`) where `id_token` is required and `vp_token` is optional. If the desired format specifies `vp_token`, a verifiable presentation token should be provided to satisfy the presentation definition contained within the request.
@@ -302,7 +302,7 @@ Decode the Issuer's SIOPv2 Authorization Request and create a [SIOPv2 Authorizat
 />
 
 :::info
-If the User's Verifiable Credentials do not satisfy the Authorization Request's Presentation Definition then only the `id_token` will be sent to the Issuer's `response_uri`. If the credentials **do** satisfy then a [Verifiable Presentation](https://developer.tbd.website/docs/glossary/#verifiable-presentation) (`vp_token`) will also be sent.  
+If the User's Verifiable Credentials do not satisfy the Authorization Request's Presentation Definition then only the `id_token` will be sent to the Issuer's `response_uri`. If the credentials **do** satisfy then a [Verifiable Presentation](https://developer.tbd.website/glossary/#verifiable-presentation) (`vp_token`) will also be sent.  
 :::
 
 If `vp_token` wasn't in the SIOPv2 Response, the Issuer will respond with a `credential_offer` and a `url` that points to a webpage (IDV form) for the customer to provide their Personally Identifiable Information. After successful completion of this form, the Wallet can proceed with the next steps, [processing the Credential Offer](#processing-the-credential-offer).
@@ -580,7 +580,7 @@ The Known Customer Credential will be a signed VC [JSON Web Token](https://www.w
 
 ## Example Known Customer Credential
 
-To convert the signed VC JWT into a `VerifiableCredential` object you can use the [`parseJwt()` method](/docs/web5/verifiable-credentials/jwt-to-vc#decoding-jwt). Here is what a decoded **Known Customer Credential** would look like:
+To convert the signed VC JWT into a `VerifiableCredential` object you can use the [`parseJwt()` method](/web5/verifiable-credentials/jwt-to-vc#decoding-jwt). Here is what a decoded **Known Customer Credential** would look like:
 
 <LanguageSwitchBlock>
   <div language="JavaScript">
