@@ -75,6 +75,7 @@ let config = {
         docs: {
           sidebarPath: './sidebars.js',
           breadcrumbs: false,
+          routeBasePath: '/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -108,10 +109,6 @@ let config = {
           to: '/docs',
           label: 'Docs',
           position: 'left',
-        },
-        {
-          to: '#ask',
-          label: 'Ask 🤖',
         },
       ],
     },
