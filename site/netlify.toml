@@ -7,8 +7,8 @@ from = "/docs/Decentralized%20Web%20Platform%20-%20Public.pdf"
 to = "/files/Decentralized-Web-Platform.pdf"
 
 [[redirects]]
-from = "/docs/web5/build/troubleshooting-guide"
-to = "/docs/web5/decentralized-web-nodes/troubleshooting/common-errors"
+from = "/docs/build/troubleshooting-guide"
+to = "/docs/decentralized-web-nodes/troubleshooting/common-errors"
 
 [[redirects]]
 from = "/docs/web5/troubleshooting-guide"
