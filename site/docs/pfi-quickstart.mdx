@@ -18,7 +18,7 @@ import Web5Url from '@site/src/components/Web5Url';
 
 ## Overview
 
-In the tbDEX ecosystem, a [Participating Financial Institution (PFI)](/tbdex/pfi/overview) provides liquidity offerings to customers via [Wallets](/tbdex/wallet/overview), allowing eligible customers to place orders and execute transactions.
+In the tbDEX ecosystem, a [Participating Financial Institution (PFI)](/pfi/overview) provides liquidity offerings to customers via [Wallets](/wallet/overview), allowing eligible customers to place orders and execute transactions.
 
 **In this quickstart, you'll:**
 
@@ -45,7 +45,7 @@ On tbDEX, PFIs are identified using <Web5Url to="/decentralized-identifiers/what
 
 ### Structure Your PFI App
 
-To operate as a PFI on the tbDEX network, you'll need a server that handles incoming requests from Wallet applications, a database that holds Offerings and Exchanges, and implementations of the OfferingsApi and ExchangesApi. We'll spare you the details in this Quickstart, however, for more info, check out the guide on [Structuring a PFI App](/tbdex/pfi/anatomy-of-a-pfi).
+To operate as a PFI on the tbDEX network, you'll need a server that handles incoming requests from Wallet applications, a database that holds Offerings and Exchanges, and implementations of the OfferingsApi and ExchangesApi. We'll spare you the details in this Quickstart, however, for more info, check out the guide on [Structuring a PFI App](/pfi/anatomy-of-a-pfi).
 
 ### Fetching Offerings for Wallets
 
@@ -67,7 +67,7 @@ const offerings = await offeringsApiProvider.getOfferings();
 
 ## Process tbDEX Messages
 
-PFIs and Wallet applications exchange [messages](/tbdex/message-types#messages) to facilitate transactions.
+PFIs and Wallet applications exchange [messages](/message-types#messages) to facilitate transactions.
 All messages are stored within an exchange in your PFI's database.
 
 Let's walk through the process of handling these messages.
@@ -123,6 +123,6 @@ Once the `Order` is completed (whether fulfilled or cancelled), you'll terminate
 
 ## Next Steps with tbDEX
 
-Congratulations on building your first PFI! To explore further, check out the full [PFI guide](/tbdex/pfi/overview).
+Congratulations on building your first PFI! To explore further, check out the full [PFI guide](/pfi/overview).
 
 </QuickstartExecutionProvider>

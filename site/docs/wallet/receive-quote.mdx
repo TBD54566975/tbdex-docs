@@ -8,12 +8,12 @@ sidebar_position: 8
 
 # Receiving Quotes
 
-After [sending an RFQ](/tbdex/wallet/send-rfq#send-rfq-to-pfi), the PFI will respond with an exact **Quote** for your customer. 
+After [sending an RFQ](/wallet/send-rfq#send-rfq-to-pfi), the PFI will respond with an exact **Quote** for your customer. 
 This message will be written to the exchange.
 
 ## Polling for Quote
 
-If you did not provide a [callback URI](/tbdex/wallet/send-rfq#send-rfq-to-pfi) when sending a RFQ, your application will need to poll the exchange until the Quote message is written:
+If you did not provide a [callback URI](/wallet/send-rfq#send-rfq-to-pfi) when sending a RFQ, your application will need to poll the exchange until the Quote message is written:
 
 <Shnip
   snippets={[
@@ -25,7 +25,7 @@ If you did not provide a [callback URI](/tbdex/wallet/send-rfq#send-rfq-to-pfi) 
 
 ## Quote Object
 
-Now that you've received a Quote, you can present it to your customer and give them the option to [place an Order](/tbdex/wallet/place-order/) or cancel the exchange.
+Now that you've received a Quote, you can present it to your customer and give them the option to [place an Order](/wallet/place-order/) or cancel the exchange.
 
 The Quote will be returned in JSON form:
 
