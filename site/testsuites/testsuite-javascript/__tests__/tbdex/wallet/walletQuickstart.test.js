@@ -6,7 +6,7 @@ import { DidDht, DidJwk } from '@web5/dids';
 import { VerifiableCredential } from '@web5/credentials';
 // :snippet-end:
 
-// Implementation in /site/code-snippets/tbdex/wallet-quickstart.js
+// Implementation in /site/code-snippets/wallet-quickstart.js
 
 // using https://aqf-mock-pfis.tbddev.org/ from mock-pfis
 // :snippet-start: walletQuickstartPfiDid

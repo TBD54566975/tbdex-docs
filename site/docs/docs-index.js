@@ -22,7 +22,7 @@ function DocsIndex() {
 
         <HeroCard
           heroText="tbDEX"
-          buttonUrl="/tbdex/"
+          buttonUrl="/"
           buttonText="Playbooks 📖"
           bodyText="Guides on integrating your app with the tbDEX SDK to seek or provide liquidity"
           imgSrc="/img/money-msg-blue-purple.svg"

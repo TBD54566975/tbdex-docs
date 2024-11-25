@@ -9,7 +9,7 @@ sidebar_position: 5
 
 # Structuring a PFI App
 
-Every PFI on the tbDEX network is required to handle its end of the responsibilities as part of each [Message Type](/tbdex/message-types). The tbDEX SDK is organized in such a way that there are three key components you'll be required to implement:
+Every PFI on the tbDEX network is required to handle its end of the responsibilities as part of each [Message Type](/message-types). The tbDEX SDK is organized in such a way that there are three key components you'll be required to implement:
 
 * **A main server entry point** - this will leverage the tbDEX SDK to create an http server subscribed to tbDEX messaging.
 
@@ -66,7 +66,7 @@ To begin, you’ll want to configure your server with the required exchange and 
     { snippetName: 'pfiOverviewConfigKt', language: 'Kotlin'}
   ]} />
 
-The [message types](/tbdex/message-types) that are sent from Wallets to PFIs are: `RFQ`, `Order`, and `Close`. 
+The [message types](/message-types) that are sent from Wallets to PFIs are: `RFQ`, `Order`, and `Close`. 
 As a result, you’ll want to ensure that your PFI is programmed to accept those messages and create appropriate messages in response:
 
 <Shnip snippets={
@@ -114,12 +114,12 @@ Using the sample code above as reference, the submission of `RFQ`, `Order`, or `
 
 As a PFI developer, you’ll be responsible for designing your own data storage and provider to access your data. 
 
-For example, after writing an `RFQ` to the database, you can [create a Quote](/tbdex/pfi/creating-quotes). 
-Similarly, after writing an `Order` to your database, you’ll want to ensure you properly [process that Order](/tbdex/pfi/processing-orders).
+For example, after writing an `RFQ` to the database, you can [create a Quote](/pfi/creating-quotes). 
+Similarly, after writing an `Order` to your database, you’ll want to ensure you properly [process that Order](/pfi/processing-orders).
 
 ### Callbacks
 
-When sending an `RFQ` message, the Wallet may also provide [an optional `replyTo` property](/tbdex/wallet/send-rfq#send-rfq-to-pfi) that allows for them to subscribe to subsequent messages. 
+When sending an `RFQ` message, the Wallet may also provide [an optional `replyTo` property](/wallet/send-rfq#send-rfq-to-pfi) that allows for them to subscribe to subsequent messages. 
 If you receive a `replyTo` property, which is a fully qualified URI (URL or DID), then as the PFI you are responsible for sending all new messages back to the endpoint provided. 
 The callback URI should be scoped only to that exchange, allowing the caller to specify a different URI per exchange if they wish. 
 If the `replyTo` property is not present, the caller will poll the exchange to get new messages.

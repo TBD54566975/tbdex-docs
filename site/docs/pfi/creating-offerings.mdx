@@ -13,12 +13,12 @@ import Web5Url from '@site/src/components/Web5Url';
 Offerings describe a currency pair that can be exchanged and specify the requirements, conditions, and constraints needed to fulfill the described transaction.
 In other words, an Offering is a way of describing a financial product you’re offering as a PFI on a tbDEX network.
 
-Any Wallet that has your PFI's DID will be able to query your PFI for all available Offerings, as well as fetch specific Offerings. Wallets will then use that data to make an [Request for Quote (RFQ)](/tbdex/wallet/send-rfq) to your PFI to begin a potential transaction process.
+Any Wallet that has your PFI's DID will be able to query your PFI for all available Offerings, as well as fetch specific Offerings. Wallets will then use that data to make an [Request for Quote (RFQ)](/wallet/send-rfq) to your PFI to begin a potential transaction process.
 
 ## Create an Offering
 
 You can use the tbDEX SDK to create Offerings.
-An Offering must adhere to the [Offering schema](https://github.com/TBD54566975/tbdex/tree/main/specs/protocol#offering).
+An Offering must adhere to the [Offering schema](https://github.com/TBD54566975/tree/main/specs/protocol#offering).
 
 <Shnip
   snippets={[
@@ -79,7 +79,7 @@ This will throw an error if it's not valid.
   ]}
 />
 
-Once the Offering has been generated, you can store it in your database using code as shown in the [Offerings API Provider section](/tbdex/pfi/anatomy-of-a-pfi#offerings-api-provider).
+Once the Offering has been generated, you can store it in your database using code as shown in the [Offerings API Provider section](/pfi/anatomy-of-a-pfi#offerings-api-provider).
 
 ## Sample Offering
 
