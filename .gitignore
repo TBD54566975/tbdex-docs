@@ -54,15 +54,14 @@ build/
 
 DATA/
 
-**/node_modules
-**/snippets
-
-
+# Ignore all target directories globally
 target/
 
 
 # Maven target dir
-site
+site/snippets
 
 # Maven binary Wrapper (we use source)
 **/.mvn/wrapper/maven-wrapper.jar
+
+!site/testsuites/testsuite-javascript/__tests__/web5/build/
