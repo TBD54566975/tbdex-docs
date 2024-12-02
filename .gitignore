@@ -63,5 +63,3 @@ site/snippets
 
 # Maven binary Wrapper (we use source)
 **/.mvn/wrapper/maven-wrapper.jar
-
-!site/testsuites/testsuite-javascript/__tests__/web5/build/
