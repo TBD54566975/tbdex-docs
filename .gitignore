@@ -56,3 +56,13 @@ DATA/
 
 **/node_modules
 **/snippets
+
+
+target/
+
+
+# Maven target dir
+site
+
+# Maven binary Wrapper (we use source)
+**/.mvn/wrapper/maven-wrapper.jar
